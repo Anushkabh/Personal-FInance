@@ -10,20 +10,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h2>Personal Expense Manager</h2>
-    <div class="container">
+    <h2>Track Your Expense</h2>
+    <div class="card">
       <h4>Your Balance</h4>
       <h1 id="balance">Rs 0.00</h1>
-      <div class="inc-exp-container">
+      <div class="income-expense-container">
         <div>
           <h4>Income</h4>
-          <p id="money-plus" class="money-plus">
+          <p id="money-surplus" class="money-surplus">
             +Rs 0.00
           </p>
         </div>
         <div>
           <h4>Expense</h4>
-          <p id="money-minus" class="money-minus">
+          <p id="money-less" class="money-less">
             -Rs 0.00
           </p>
         </div>
@@ -33,17 +33,24 @@
       <ul id="list" class="list">
         
       </ul>
+
+
+
+
+
+
+      
       <h3>Add New Transaction</h3>
       <form id="form">
           <div class="form-control">
               <label for="text">Text</label>
-              <input type="text" id="text" placeholder="Enter Text...."/>
+              <input type="text" id="text" placeholder="Enter description...."/>
           </div>
           <div class="form-control">
               <label for="amount">Amount <br> (Write expenses using a negative(-) sign)</label>
               <input type="number" id="amount" placeholder="Enter amount..."> 
           </div>
-          <button class="btn">All transactions</button>
+          <button class="btn">Add this Transaction</button>
       </form>
     </div>
     <!-- JavaYscript Project  -->
