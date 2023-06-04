@@ -3,10 +3,10 @@ const balance = document.getElementById(
   "balance"
 );
 const money_plus = document.getElementById(
-  "money-plus"
+  "money-surplus"
 );
 const money_minus = document.getElementById(
-  "money-minus"
+  "money-less"
 );
 const list = document.getElementById("list");
 const form = document.getElementById("form");
@@ -22,6 +22,33 @@ const localStorageTransactions = JSON.parse(localStorage.getItem('transactions')
 let transactions = localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
 
 //5
+
+//write a function to get date,mont,year
+function getdate(){
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1;
+  var yyyy = today.getFullYear();
+
+  if(dd<10){
+    dd='0'+dd;
+  }
+  if(mm<10){
+    mm='0'+mm;
+  }
+  today = dd+'/'+mm+'/'+yyyy;
+  return today;
+}
+
+
+
+
+
+
+
+
+
+
 function addTransaction(e){
   e.preventDefault();
   if(text.value.trim() === '' || amount.value.trim() === ''){
@@ -30,7 +57,9 @@ function addTransaction(e){
     const transaction = {
       id:generateID(),
       text:text.value,
-      amount:+amount.value
+      dae:getdate(),
+      amount:+amount.value,
+     
     }
 
 
@@ -66,11 +95,12 @@ function addTransactionDOM(transaction) {
 
   item.innerHTML = `
     ${transaction.text} <span>${sign}${Math.abs(
-    transaction.amount
-  )}
+    transaction.amount)} 
   </span>
+    <span>${transaction.dae}</span>
+   
     <button class="delete-btn" onclick="removeTransaction(${transaction.id})">x</button>
-    `;
+    `
   list.appendChild(item);
 }
 
@@ -94,9 +124,9 @@ function updateValues() {
       .reduce((acc, item) => (acc += item), 0) *
     -1).toFixed(2);
 
-    balance.innerText=`Rs${total}`;
-    money_plus.innerText = `Rs${income}`;
-    money_minus.innerText = `Rs${expense}`;
+    balance.innerText=`Rs ${total}`;
+    money_plus.innerText = `Rs ${income}`;
+    money_minus.innerText = `Rs ${expense}`;
 }
 
 
