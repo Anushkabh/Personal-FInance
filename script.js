@@ -156,3 +156,13 @@ function Init() {
 Init();
 
 form.addEventListener('submit',addTransaction);
+
+let popup=document.getElementById("popup");
+
+function openPopup(){
+  popup.classList.add("open-popup");
+}
+
+function closePopup(){
+  popup.classList.remove("open-popup");
+}
