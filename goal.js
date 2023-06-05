@@ -46,6 +46,32 @@ function Goal(name, amount, deadline) {
     }
   }
   
+  // Check Goal Completion
+function checkGoalCompletion(goal) {
+    var now = new Date();
+    if (now > goal.deadline && !goal.isCompleted) {
+      goal.isCompleted = true;
+      showNotification(goal.name + ' goal is overdue!');
+      // You can perform any additional actions when a goal is overdue, like updating UI or sending reminders.
+    }
+  }
+  
+  // Show notification
+  function showNotification(message) {
+    // Replace with your own notification code/library
+    alert(message);
+  }
+  
+  // Set up Goal Reminder
+  function setupGoalReminder(goal) {
+    var timeUntilDeadline = goal.deadline - Date.now();
+    if (timeUntilDeadline > 0) {
+      setTimeout(function() {
+        showNotification(goal.name + ' goal deadline is approaching!');
+      }, timeUntilDeadline);
+    }
+  }
+  
   // Add Goal Event Listener
   var addGoalBtn = document.getElementById('add-goal-btn');
   addGoalBtn.addEventListener('click', addGoal);
